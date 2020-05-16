@@ -1,1 +1,6 @@
 sudo apt-install python3-django
+
+# create project mysite
+django-admin startproject mysite .
+
+python3 manage.py startapp catalog
