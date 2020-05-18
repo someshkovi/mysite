@@ -7,3 +7,47 @@ python3 manage.py startapp catalog
 
 
 add catalog in setting.py/INSTALLED_APPS
+
+#postgres client install
+pip3 install psycopg2
+
+#after adding in settings.py for db
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+
+
+append catalog/urls to main urls
+
+
+python3 manage.py startapp blog
+#added blog.apps.BlogConfig to INSTALLED_APPS
+python3 manage.py makemigrations
+python3 manage.py migrate blog
+
+python3 manage.py createsuperuser
+
+git remote add origin https://github.com/someshkovi/mysite
+
+git push -u origin master
+
+
+
+
+#create app polls
+python3 manage.py startapp polls
+
+python3 manage.py makemigrations polls
+
+#to get sql command to make changes to databases
+python3 manage.py sqlmigrate polls 0001
+python3 manage.py migrate
+
+Change your models (in models.py).
+Run python manage.py makemigrations to create migrations for those changes
+Run python manage.py migrate to apply those changes to the database.
+
+
+
+python3 manage.py shell
