@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'snippets.apps.SnippetsConfig',
     'polls.apps.PollsConfig',
     'rest_framework',

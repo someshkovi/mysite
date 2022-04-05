@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %} Post detail {% endblock %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock stylesheets %}
+{% block content %}
+    <div class="content">
+        <h2>New post</h2>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-secondary">Save</button>
+        </form>
+	</div>
+{% endblock %}
