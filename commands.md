@@ -7,3 +7,6 @@
 * python3 manage.py createsuperuser
 * python3 manage.py test polls
 * python3 -c "import django; print(django.__path__)"
+* python3 manage.py collectstatic
+
+* django-admin startapp blog
