@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 pygments = "*"
 pillow = "*"
+whitenoise = "*"
 
 [dev-packages]
 pylint = "*"

@@ -10,3 +10,6 @@
 * python3 manage.py collectstatic
 
 * django-admin startapp blog
+
+## for django-anywhere
+* $ pa_autoconfigure_django.py --python=3.8 https://github.com/someshkovi/mysite.git--nuke                                         
