@@ -9,6 +9,7 @@ djangorestframework = "*"
 pygments = "*"
 pillow = "*"
 whitenoise = "*"
+django-widget-tweaks = "*"
 
 [dev-packages]
 pylint = "*"

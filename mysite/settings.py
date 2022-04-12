@@ -34,7 +34,10 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'snippets.apps.SnippetsConfig',
     'polls.apps.PollsConfig',
+    'todo.apps.TodoConfig',
+
     'rest_framework',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +69,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -128,6 +132,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # default value"django.contrib.staticfiles.storage.StaticFilesStorage"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Base url to serve media files
+MEDIA_URL = 'media/'
+
+# Path where media is stored
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -138,3 +147,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+

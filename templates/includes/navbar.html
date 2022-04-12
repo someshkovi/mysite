@@ -1,0 +1,53 @@
+<nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'blog:index' %}"><strong>Escpae</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'todo:task_list' %}">Todo <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:index' %}">Tech</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'snippet-list' %}">Snippets</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'polls:index' %}">Polls</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin</a>
+                </li>            
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:about' %}">Docs <span class="badge badge-secondary">D</span></a>
+                </li>
+            </ul>
+            {% if request.user.is_authenticated %}
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item dropdown highlight">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ request.user.username }}</a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="#" class="dropdown-item">Reports</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
+            </ul>
+
+            {% else %}
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li class="nav-item highlight">
+                    <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            {% endif %}	
+        </div>
+    </div>
+    </nav>

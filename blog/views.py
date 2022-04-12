@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views import generic
 
-from blog.models import Post, Article
+from blog.models import Post, Article, ArticleComment
 from blog.forms import PostForm
 
 class IndexView(generic.ListView):
@@ -14,12 +14,25 @@ class DetailView(generic.DetailView):
     model = Article
     template_name = 'blog/article.html'
 
-# def index(request):
-#     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-#     context = {
-#         'posts': posts
-#     }
-#     return render(request, 'blog/index.html', context)
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+
+        comments_connected = ArticleComment.objects.filter(
+            article_connected=self.get_object()).order_by('-date_posted')
+        data['comments'] = comments_connected
+        # if self.request.user.is_authenticated:
+        #     data['comment_form'] = NewCommentForm(instance=self.request.user)
+
+        return data
+
+def index(request):
+    articles = Article.objects.all()
+
+    context = {
+        'articles': articles
+    }
+    return render(request, 'blog/index.html', context)
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -42,7 +55,7 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -57,7 +70,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
