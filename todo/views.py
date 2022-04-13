@@ -55,7 +55,7 @@ def taskDelete(request, pk):
     task.delete()
     return Response('Task Successfully Deleted!')
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/admin/login/')
 def task_list(request):
     return render(request, 'todo/list.html')
 
